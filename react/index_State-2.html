@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    //state 리랜더링을 하는 react.js의 기능
+    const root = document.querySelector('#root');
+    function App() { 
+        const [counter, setCounter] = React.useState(0);//초기값 설정가능
+        // console.log(data);//undefined(=data)와 함수(data를 바꾸는 함수)가 넘어옴. useState의 ()안에 넣는 게 초기값
+        const onClick = () =>{
+            setCounter(counter + 1);
+            // counter = counter + 1;
+            // console.log(counter);
+        }
+        return (
+            <div>
+                <h3>Total clicks: {counter}</h3>
+                <button onClick={onClick}>Click Me</button>
+            </div>
+        ); 
+    }
+    ReactDOM.render(<App />, root);
+    //데이터가 바뀔 때마다 컴포넌트를 리렌더링하고 UI를 refresh하는 것.
+
+</script>
+</html>

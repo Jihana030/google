@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    //state 어려운 방법
+    const root = document.querySelector('#root');
+    let counter = 0;
+    function countUp(){
+        counter = counter +1;
+        render(); //값이 바뀔때마다 다시 랜더링 해줘야 함. 최고의 방법은 아님.
+    }
+    function render(){
+        ReactDOM.render(<Container />, root);
+    }
+    const Container = ()=> (
+        <div>
+            <h3> 
+                Total clicks: {counter}
+            </h3>
+
+            <button onClick = {countUp}>
+                Click Me
+            </button>
+        </div>
+        ); 
+    render();
+
+/*
+react는 개발자모드에서 변경된 부분만 업데이트해줌
+=js는 노드트리를 처음부터 다 다시 생성. react는 변경이 끝나면 일괄로 합쳐서 DOM에 던져줌.
+*/
+</script>
+</html>
